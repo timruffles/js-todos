@@ -2,7 +2,7 @@
 
 [![Technical debt analysis](https://www.sidekickjs.com/r/timruffles/js-todos/status_badge.svg)](https://www.sidekickjs.com/r/timruffles/js-todos)
 
-Find todos in JS code. Uses esprima, so robust.
+Find todos in JS code. Uses esprima, so won't give you false positives like 'grep -r TODO', but is as easy to use.
 
 ```
 # ./node_modules/.bin on path? if not, install with --global / -g
