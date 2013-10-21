@@ -93,6 +93,7 @@ cmts.outputters = {
         console.log(JSON.stringify(all))
         if(!opts.nostatus) process.exit(all.length === 0 ? 0 : 1)
       }
+      issue.path = path
       all.push(issue)
     }
   }
