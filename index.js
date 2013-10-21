@@ -44,7 +44,7 @@ function pluralize(str,n) {
   return n === 1 ? str : str + "s"
 }
 cmts.outputters = {
-  default: function() {
+  default: function(opts) {
     var colors = require("colors")
     var paths = {}
     var total = 0
@@ -73,7 +73,7 @@ cmts.outputters = {
         })
         console.log("")
       })
-      process.exit(total === 0 ? 0 : 1)
+      if(!opts.nostatus) process.exit(total === 0 ? 0 : 1)
     }
     return function(issue,path) {
       if(issue === "complete") return finish()
@@ -85,13 +85,13 @@ cmts.outputters = {
       byType[issue.type].push(issue)
     }
   },
-  json: function() {
+  json: function(opts) {
     var all = []
     return function(issue,path) {
       if(!issue) return
       if(issue === "complete") {
         console.log(JSON.stringify(all))
-        process.exit(all.length === 0 ? 0 : 1)
+        if(!opts.nostatus) process.exit(all.length === 0 ? 0 : 1)
       }
       all.push(issue)
     }

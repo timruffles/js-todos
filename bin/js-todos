@@ -9,4 +9,4 @@ if(!output) {
   throw new Error("Unknown outputter '" + argv.outputter + "'")
 }
 
-cmts.readAll(argv._,output())
+cmts.readAll(argv._,output(argv))

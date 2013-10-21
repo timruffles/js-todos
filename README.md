@@ -13,6 +13,7 @@ js-todos *.js
 - --outputter - set output
 -- json: outputs as list of issues
 -- default: human readable format
+- --nostatus - disable exit status (to invoke via process spawing)
 
 ## API
 
