@@ -60,7 +60,7 @@ cmts.readAll = function(paths,output) {
 
 cmts.outputters = {
   default: function(opts) {
-    var colors = require("colors")
+    require("colors") // extends string proto
     var paths = {}
     var total = 0
     var byType = {}
@@ -93,7 +93,7 @@ cmts.outputters = {
     return function(issue,path) {
       if(issue === "complete") return finish()
       paths[path] = paths[path] || []
-      if(!issue) return
+      if(!issue) return;
       total += 1
       paths[path].push(issue)
       byType[issue.type] = byType[issue.type] || []
@@ -103,7 +103,7 @@ cmts.outputters = {
   json: function(opts) {
     var all = []
     return function(issue,path) {
-      if(!issue) return
+      if(!issue) return;
       if(issue === "complete") {
         console.log(JSON.stringify(all))
         if(!opts.nostatus) process.exit(all.length === 0 ? 0 : 1)
