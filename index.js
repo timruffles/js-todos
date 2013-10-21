@@ -1,11 +1,13 @@
 var esprima = require("esprima")
 
+// public API
 function findTodos(src) {
   var ast = esprima.parse(src,{loc: true,comment: true});
   return cmts.commentsToIssues(ast.comments);
 }
 
 var cmts = module.exports = findTodos;
+
 cmts.readIssues = function(comment) {
   var found
   cmts.types.some(function(fn) {
@@ -16,6 +18,7 @@ cmts.readIssues = function(comment) {
   })
   return found
 }
+
 cmts.commentsToIssues = function(comments) {
   var all = []
   comments.forEach(function(comment) {
@@ -24,8 +27,7 @@ cmts.commentsToIssues = function(comments) {
   })
   return all
 };
-var todoRe = commentSafeRe("TODO")
-var fixmeRe = commentSafeRe("FIXME")
+
 cmts.types = [
   function(comment) {
     var val = comment.value
@@ -40,9 +42,22 @@ cmts.types = [
     return found
   }
 ]
-function pluralize(str,n) {
-  return n === 1 ? str : str + "s"
+var todoRe = commentSafeRe("TODO")
+var fixmeRe = commentSafeRe("FIXME")
+
+// output
+cmts.readAll = function(paths,output) {
+  var fs = require("fs")
+  paths.forEach(function(path) {
+    output(null,path)
+    var issues = cmts(fs.readFileSync(path,"utf-8"))
+    issues.forEach(function(issue) {
+      output(issue,path)
+    })
+  })
+  output("complete")
 }
+
 cmts.outputters = {
   default: function(opts) {
     var colors = require("colors")
@@ -99,18 +114,10 @@ cmts.outputters = {
   }
 }
 
+function pluralize(str,n) {
+  return n === 1 ? str : str + "s"
+}
 function commentSafeRe(word) {
   return new RegExp('\\s*\\*?\\b' + '(' + word + ')' + '\\b');
 }
 
-cmts.readAll = function(paths,output) {
-  var fs = require("fs")
-  paths.forEach(function(path) {
-    output(null,path)
-    var issues = cmts(fs.readFileSync(path,"utf-8"))
-    issues.forEach(function(issue) {
-      output(issue,path)
-    })
-  })
-  output("complete")
-}
