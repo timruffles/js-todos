@@ -27,6 +27,8 @@ Takes an Esprima AST comment and parses for TODO/FIXME. Returns comment with add
 
 ### jsTodos.commentsToTodos(comments)
 
+[![Technical debt analysis](https://www.sidekickjs.com/r/timruffles/js-todos/status_badge.svg)](https://www.sidekickjs.com/r/timruffles/js-todos)
+
 Runs `findTodo` on each comment, returns an array of all todos found.
 
 ### jsTodos.readAll(paths,output)
@@ -43,7 +45,7 @@ To define an outputter add it to `jsTodos.outputter`. It should be a function th
 
 ### jsTodos.types
 
-Add functions to this array that take a comment and return an todo if found. An todo contains the same fields (`value`, `loc` etc) with an added `type` field - by default `'TODO'` and `'FIXME'`, but add your own.
+Add functions to this array that take a comment and return an todo if found. A todo contains the same fields (`value`, `loc` etc) with an added `type` field - by default `'TODO'` and `'FIXME'`, but add your own.
 
 Example:
 
