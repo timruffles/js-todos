@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+
+var cmts = require("../index.js")
+var argv = require("optimist").argv
+
+var output = cmts.outputters[argv.outputter || "default"]
+
+if(!output) {
+  throw new Error("Unknown outputter '" + argv.outputter + "'")
+}
+
+cmts.readAll(argv._,output())

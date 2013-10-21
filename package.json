@@ -10,11 +10,15 @@
     "type": "git",
     "url": "ssh://git@bitbucket.org/timruffles/comment-parser.git"
   },
+  "bin": {
+    "js-todos": "./bin/js-todos"
+  },
   "author": "Tim Ruffles",
   "license": "BSD",
   "dependencies": {
-    "esprima": "~1.0.4"
-  }
+    "esprima": "~1.0.4",
+    "colors": "~0.6.2"
+  },
   "devDependencies": {
     "referee": "~1.0.1",
     "mocha": "~1.13.0"
