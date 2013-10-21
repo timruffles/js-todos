@@ -1,11 +1,12 @@
 {
   "name": "js-todos",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Finds todos in JS source-code",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "homepage": "https://github.com/timruffles/js-todos",
   "repository": {
     "type": "git",
     "url": "ssh://git@bitbucket.org/timruffles/comment-parser.git"
