@@ -3,7 +3,6 @@ var esprima = require("esprima")
 var assert = ref.assert;
 var refute = ref.refute;
 var cmts = require("./index.js")
-var pp = require("../pretty-print/index.js")
 var fs = require("fs")
 
 describe("parsing",function() {

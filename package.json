@@ -13,8 +13,9 @@
   "author": "Tim Ruffles",
   "license": "BSD",
   "dependencies": {
-    "esprima": "~1.0.4",
-    "ast-traverse": "~0.1.1",
+    "esprima": "~1.0.4"
+  }
+  "devDependencies": {
     "referee": "~1.0.1",
     "mocha": "~1.13.0"
   }
