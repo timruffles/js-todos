@@ -8,13 +8,14 @@ module.exports = cmts = {
     return ast;
   },
   readIssues: function(comment) {
-    for(var p in cmts.types) {
-      var fn = cmts.types[p];
+    var found
+    cmts.types.some(function(fn) {
       var issue
       if(issue = fn(comment)) {
-        return issue;
+        return found = issue
       }
-    }
+    })
+    return found
   },
   commentsToIssues: function(comments) {
     var all = []
@@ -26,8 +27,8 @@ module.exports = cmts = {
   },
   todoRe: commentSafeRe("TODO"),
   fixmeRe: commentSafeRe("FIXME"),
-  types: {
-    todoOrFixme: function(comment) {
+  types: [
+    function(comment) {
       var val = comment.value
       var found
       [cmts.todoRe,cmts.fixmeRe].some(function(re) {
@@ -39,7 +40,7 @@ module.exports = cmts = {
       })
       return found
     }
-  }
+  ]
 }
 
 function commentSafeRe(word) {
