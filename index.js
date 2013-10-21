@@ -3,12 +3,12 @@ var esprima = require("esprima")
 // public API
 function findTodos(src) {
   var ast = esprima.parse(src,{loc: true,comment: true});
-  return cmts.commentsToIssues(ast.comments);
+  return cmts.commentsToTodos(ast.comments);
 }
 
 var cmts = module.exports = findTodos;
 
-cmts.readIssues = function(comment) {
+cmts.findTodo = function(comment) {
   var found
   cmts.types.some(function(fn) {
     var issue
@@ -19,10 +19,10 @@ cmts.readIssues = function(comment) {
   return found
 }
 
-cmts.commentsToIssues = function(comments) {
+cmts.commentsToTodos = function(comments) {
   var all = []
   comments.forEach(function(comment) {
-    var issue = cmts.readIssues(comment)
+    var issue = cmts.findTodo(comment)
     if(issue) all.push(issue)
   })
   return all
