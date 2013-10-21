@@ -42,8 +42,8 @@ cmts.types = [
     return found
   }
 ]
-var todoRe = commentSafeRe("TODO")
-var fixmeRe = commentSafeRe("FIXME")
+var todoRe = commentSafeRe("todo")
+var fixmeRe = commentSafeRe("fixme")
 
 // output
 cmts.readAll = function(paths,output) {
@@ -118,6 +118,10 @@ function pluralize(str,n) {
   return n === 1 ? str : str + "s"
 }
 function commentSafeRe(word) {
-  return new RegExp('\\s*\\*?\\b' + '(' + word + ')' + '\\b');
+  var options = [
+    '\\b' + word.toUpperCase() + '\\b',
+    '@' + word + '\\b'
+  ].join("|") 
+  return new RegExp('\\s*\\*?' + '(' + options + ')');
 }
 
