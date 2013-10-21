@@ -1,5 +1,7 @@
 # JS-TODOs
 
+[![Technical debt analysis](https://www.sidekickjs.com/r/timruffles/js-todos/status_badge.svg)](https://www.sidekickjs.com/r/timruffles/js-todos)
+
 Find todos in JS code. Uses esprima, so robust.
 
 ```
@@ -26,8 +28,6 @@ Main function - takes javascript source, parses, return todos.
 Takes an Esprima AST comment and parses for TODO/FIXME. Returns comment with added todo type field, or undefined if no todo was found. 
 
 ### jsTodos.commentsToTodos(comments)
-
-[![Technical debt analysis](https://www.sidekickjs.com/r/timruffles/js-todos/status_badge.svg)](https://www.sidekickjs.com/r/timruffles/js-todos)
 
 Runs `findTodo` on each comment, returns an array of all todos found.
 
