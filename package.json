@@ -1,10 +1,10 @@
 {
   "name": "js-todos",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Finds todos in JS source-code",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "homepage": "https://github.com/timruffles/js-todos",
   "repository": {

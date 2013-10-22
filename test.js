@@ -7,9 +7,19 @@ var fs = require("fs")
 
 describe("parsing",function() {
   it("only takes comment content from point of first TODO/FIXME onwards",function() {
-    var input = {value: "foo\n\bar\n TODO baz\nanother line"}
+    var input = firstComment("foo\nbar\n/* TODO baz\nanother line */")
     var output = cmts.findTodo(input)
-    assert.equals(output.value, "TODO baz\nanother line")
+    assert.equals(output.value, "TODO baz\nanother line ")
+  })
+  it("returns correct start line for todo in multi-line todos ",function() {
+    var input = firstComment([
+      "/*",
+      " *",
+      "* TODO*/"
+    ].join("\n"))
+    var output = cmts.findTodo(input)
+    assert.equals(3,output.loc.start.line)
+    assert.equals(2,output.loc.start.character)
   })
   var positives = readExamples("./positive-fixtures.js").comments
   positives.forEach(function(comment,i) {
@@ -29,5 +39,8 @@ describe("parsing",function() {
 
 function readExamples(path) {
   var src = fs.readFileSync(path,"utf-8")
-  return esprima.parse(src,{comment: true})
+  return esprima.parse(src,{comment: true,loc: true})
+}
+function firstComment(src) {
+  return esprima.parse(src,{comment: true,loc: true}).comments[0]
 }

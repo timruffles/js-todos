@@ -34,11 +34,15 @@ cmts.types = [
     var found
     [todoRe,fixmeRe].some(function(re) {
       var match
-      if(match = re.exec(comment.value)) {
-        found = comment
+      if(!(match = re.exec(comment.value))) return
+      comment.type = match[1]
+      var linesBefore = comment.value.slice(0,match.index).split(/\n/g)
+      if(linesBefore.length > 0) {
+        comment.loc.start.line += linesBefore.length - 1
+        comment.loc.start.character = linesBefore[linesBefore.length - 1].length
         comment.value = comment.value.slice(match.index)
-        comment.type = match[1]
       }
+      return found = comment
     })
     return found
   }
