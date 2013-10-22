@@ -1,6 +1,6 @@
 {
   "name": "js-todos",
-  "version": "0.1.0",
+  "version": "0.0.4",
   "description": "Finds todos in JS source-code",
   "main": "index.js",
   "scripts": {
@@ -18,7 +18,8 @@
   "license": "BSD",
   "dependencies": {
     "esprima": "~1.0.4",
-    "colors": "~0.6.2"
+    "colors": "~0.6.2",
+    "optimist": "~0.6.0"
   },
   "devDependencies": {
     "referee": "~1.0.1",
