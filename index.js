@@ -36,6 +36,7 @@ cmts.types = [
       var match
       if(match = re.exec(comment.value)) {
         found = comment
+        comment.value = comment.value.slice(match.index)
         comment.type = match[1]
       }
     })
@@ -127,6 +128,6 @@ function commentSafeRe(word) {
     '\\b' + word.toUpperCase() + '\\b',
     '@' + word + '\\b'
   ].join("|") 
-  return new RegExp('\\s*\\*?' + '(' + options + ')');
+  return new RegExp(options);
 }
 
