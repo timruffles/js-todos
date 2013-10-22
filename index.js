@@ -50,10 +50,15 @@ cmts.readAll = function(paths,output) {
   var fs = require("fs")
   paths.forEach(function(path) {
     output(null,path)
-    var issues = cmts(fs.readFileSync(path,"utf-8"))
-    issues.forEach(function(issue) {
-      output(issue,path)
-    })
+    try {
+      var issues = cmts(fs.readFileSync(path,"utf-8"))
+      issues.forEach(function(issue) {
+        output(issue,path)
+      })
+    } catch(e) {
+      console.error("Error processing " + path + ":" + e);
+      process.exit(1)
+    }
   })
   output("complete")
 }
