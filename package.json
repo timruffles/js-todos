@@ -1,6 +1,6 @@
 {
   "name": "js-todos",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Finds todos in JS source-code",
   "main": "index.js",
   "scripts": {
@@ -14,6 +14,10 @@
   "bin": {
     "js-todos": "./bin/js-todos"
   },
+  "files": [
+    "bin",
+    "index.js"
+  ],
   "author": "Tim Ruffles",
   "license": "BSD",
   "dependencies": {
