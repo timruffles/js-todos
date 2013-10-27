@@ -11,6 +11,11 @@ describe("parsing",function() {
     var output = cmts.findTodo(input)
     assert.equals(output.value, "TODO baz\nanother line ")
   })
+  it("sets type correctly",function() {
+    var input = firstComment("foo\nbar\n/* TODO baz\nanother line */")
+    var output = cmts.findTodo(input)
+    assert.equals(output.type, "todo")
+  })
   it("returns correct start line for todo in multi-line todos ",function() {
     var input = firstComment([
       "/*",

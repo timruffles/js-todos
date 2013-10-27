@@ -32,10 +32,10 @@ cmts.types = [
   function(comment) {
     var val = comment.value
     var found
-    [todoRe,fixmeRe].some(function(re) {
+    [{re:todoRe, type:"todo"},{re:fixmeRe, type:"fixme"}].some(function(setup) {
       var match
-      if(!(match = re.exec(comment.value))) return
-      comment.type = match[1]
+      if(!(match = setup.re.exec(comment.value))) return
+      comment.type = setup.type
       var linesBefore = comment.value.slice(0,match.index).split(/\n/g)
       if(linesBefore.length > 0) {
         comment.loc.start.line += linesBefore.length - 1
