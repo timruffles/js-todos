@@ -2,6 +2,7 @@ var esprima = require("esprima")
 
 // public API
 function findTodos(src) {
+  src = stripShebang(src);
   var ast = esprima.parse(src,{loc: true,comment: true});
   return cmts.commentsToTodos(ast.comments);
 }
@@ -135,3 +136,7 @@ function commentSafeRe(word) {
   return new RegExp(options);
 }
 
+
+function stripShebang(src) {
+  return src.replace(/^#![^\n]*/, '');
+}

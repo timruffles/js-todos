@@ -40,6 +40,12 @@ describe("parsing",function() {
       refute(issue,"False positive in \n" + comment.value)
     });
   })
+
+  it("handles shebang lines", function() {
+    var todos = cmts("#!/usr/bin/env node\nfoo\nbar\n/* TODO baz\nanother line */");
+
+    assert.equals(todos.length, 1);
+  });
 })
 
 function readExamples(path) {
