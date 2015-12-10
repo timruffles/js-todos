@@ -1,6 +1,6 @@
 {
   "name": "js-todos",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Finds todos in JS source-code",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
   "homepage": "https://github.com/timruffles/js-todos",
   "repository": {
     "type": "git",
-    "url": "ssh://git@bitbucket.org/timruffles/comment-parser.git"
+    "url": "https://github.com/timruffles/js-todos.git"
   },
   "bin": {
     "js-todos": "./bin/js-todos"
