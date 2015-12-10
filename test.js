@@ -46,6 +46,12 @@ describe("parsing",function() {
 
     assert.equals(todos.length, 1);
   });
+
+  it("handles es6", function() {
+    var todos = cmts("`some es6`\nfoo\nbar\n/* TODO baz\nanother line */");
+
+    assert.equals(todos.length, 1);
+  });
 })
 
 function readExamples(path) {
