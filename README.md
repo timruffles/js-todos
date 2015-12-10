@@ -1,10 +1,8 @@
 # JS-TODOs
 
-[![Technical debt analysis](https://www.sidekickjs.com/r/timruffles/js-todos/status_badge.svg)](https://www.sidekickjs.com/r/timruffles/js-todos)
-
 Find todos in JS code. Uses esprima, so won't give you false positives like 'grep -r TODO', but is as easy to use.
 
-```
+```sh
 # ./node_modules/.bin on path? if not, install with --global / -g
 npm install js-todos
 js-todos *.js
@@ -49,7 +47,7 @@ Add functions to this array that take a comment and return an todo if found. A t
 
 Example:
 
-```
+```javascript
 jsTodos.types.push(function(comment) {
   if(/WTF/.test(comment.value)) {
     comment.type = "WTF"
