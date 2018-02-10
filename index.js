@@ -1,9 +1,9 @@
-var esprima = require("esprima")
+var espree = require("espree")
 
 // public API
 function findTodos(src) {
   src = stripShebang(src);
-  var ast = esprima.parse(src,{loc: true,comment: true});
+  var ast = espree.parse(src,{loc: true,comment: true});
   return cmts.commentsToTodos(ast.comments);
 }
 
