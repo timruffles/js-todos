@@ -3,7 +3,7 @@ var espree = require("espree")
 // public API
 function findTodos(src) {
   src = stripShebang(src);
-  var ast = espree.parse(src,{loc: true,comment: true});
+  var ast = espree.parse(src,{loc: true, comment:true, {ecmaVersion: 9}});
   return cmts.commentsToTodos(ast.comments);
 }
 
