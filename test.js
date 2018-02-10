@@ -1,5 +1,5 @@
 var ref = require("referee")
-var esprima = require("esprima")
+var espree = require("espree")
 var assert = ref.assert;
 var refute = ref.refute;
 var cmts = require("./index.js")
@@ -56,8 +56,8 @@ describe("parsing",function() {
 
 function readExamples(path) {
   var src = fs.readFileSync(path,"utf-8")
-  return esprima.parse(src,{comment: true,loc: true})
+  return espree.parse(src,{comment: true,loc: true})
 }
 function firstComment(src) {
-  return esprima.parse(src,{comment: true,loc: true}).comments[0]
+  return espree.parse(src,{comment: true,loc: true}).comments[0]
 }
