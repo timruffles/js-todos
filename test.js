@@ -52,6 +52,12 @@ describe("parsing",function() {
 
     assert.equals(todos.length, 1);
   });
+  
+  it("handles es9", function() {
+    var todos = cmts("const x = {...y};\nfoo\nbar\n/* TODO baz\nanother line */");
+
+    assert.equals(todos.length, 1);
+  });
 })
 
 function readExamples(path) {
