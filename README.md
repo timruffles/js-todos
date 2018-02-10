@@ -1,6 +1,6 @@
 # JS-TODOs
 
-Find todos in JS code. Uses esprima, so won't give you false positives like 'grep -r TODO', but is as easy to use.
+Find todos in JS code. Uses [espree](https://github.com/eslint/espree), so won't give you false positives like 'grep -r TODO', but is as easy to use.
 
 ```sh
 # ./node_modules/.bin on path? if not, install with --global / -g
@@ -23,7 +23,7 @@ Main function - takes javascript source, parses, return todos.
 
 ### jsTodos.findTodo(comment)
 
-Takes an Esprima AST comment and parses for TODO/FIXME. Returns comment with added todo type field, or undefined if no todo was found. 
+Takes an Espree AST comment and parses for TODO/FIXME. Returns comment with added todo type field, or undefined if no todo was found. 
 
 ### jsTodos.commentsToTodos(comments)
 
