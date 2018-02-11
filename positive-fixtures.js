@@ -1,6 +1,6 @@
 // TODO must be fixed!
 /* TODO must be fixed! */
-/*\ 
+/* \
  * FIXME must be fixed! */
 /*
  * TODO must be fixed! */
@@ -11,8 +11,8 @@
 /*
  * @todo foo*/
 /* TODO */
-/*TODO*/
-//TODO
+/* TODO*/
+// TODO
 //           TODO
 /*           TODO
  *           stuff*/

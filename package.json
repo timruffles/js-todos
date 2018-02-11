@@ -4,6 +4,7 @@
   "description": "Finds todos in JS source-code",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint *.js",
     "test": "mocha"
   },
   "homepage": "https://github.com/timruffles/js-todos",
@@ -26,7 +27,9 @@
     "optimist": "~0.6.0"
   },
   "devDependencies": {
-    "referee": "~1.0.1",
-    "mocha": "~1.13.0"
+    "eslint": "^4.17.0",
+    "eslint-config-airbnb-improved": "^3.0.3",
+    "mocha": "~1.13.0",
+    "referee": "^1.0.3"
   }
 }
